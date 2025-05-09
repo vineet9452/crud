@@ -143,48 +143,90 @@ export default function EmployeePage() {
 
       {error && <p className="text-red-500 text-sm font-medium">{error}</p>}
 
-      <div className="border rounded-md overflow-x-auto">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Sr.No</TableHead>
-              <TableHead>ID</TableHead>
-              <TableHead>First Name</TableHead>
-              <TableHead>Last Name</TableHead>
-              <TableHead>Age</TableHead>
-              <TableHead>Actions</TableHead>
+      // <div className="border rounded-md overflow-x-auto">
+      //   <Table>
+      //     <TableHeader>
+      //       <TableRow>
+      //         <TableHead>Sr.No</TableHead>
+      //         <TableHead>ID</TableHead>
+      //         <TableHead>First Name</TableHead>
+      //         <TableHead>Last Name</TableHead>
+      //         <TableHead>Age</TableHead>
+      //         <TableHead>Actions</TableHead>
+      //       </TableRow>
+      //     </TableHeader>
+      //     <TableBody>
+      //       {Array.isArray(data) &&
+      //         data.map((item, idx) => (
+      //           <TableRow key={item._id}>
+      //             <TableCell>{idx + 1}</TableCell>
+      //             <TableCell>{item._id}</TableCell>
+      //             <TableCell>{item.firstName}</TableCell>
+      //             <TableCell>{item.lastName}</TableCell>
+      //             <TableCell>{item.age}</TableCell>
+      //             <TableCell>
+      //               <div className="flex gap-2">
+      //                 <Button
+      //                   variant="outline"
+      //                   onClick={() => handleEdit(item)}
+      //                 >
+      //                   Edit
+      //                 </Button>
+      //                 <Button
+      //                   variant="destructive"
+      //                   onClick={() => handleDelete(item._id)}
+      //                 >
+      //                   Delete
+      //                 </Button>
+      //               </div>
+      //             </TableCell>
+      //           </TableRow>
+      //         ))}
+      //     </TableBody>
+      //   </Table>
+      // </div>
+        <div className="w-full overflow-x-auto">
+  <div className="min-w-[600px]">
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead>Sr.No</TableHead>
+          <TableHead>ID</TableHead>
+          <TableHead>First Name</TableHead>
+          <TableHead>Last Name</TableHead>
+          <TableHead>Age</TableHead>
+          <TableHead>Actions</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {Array.isArray(data) &&
+          data.map((item, idx) => (
+            <TableRow key={item._id}>
+              <TableCell>{idx + 1}</TableCell>
+              <TableCell className="break-all">{item._id}</TableCell>
+              <TableCell>{item.firstName}</TableCell>
+              <TableCell>{item.lastName}</TableCell>
+              <TableCell>{item.age}</TableCell>
+              <TableCell>
+                <div className="flex flex-col sm:flex-row gap-2">
+                  <Button variant="outline" onClick={() => handleEdit(item)}>
+                    Edit
+                  </Button>
+                  <Button
+                    variant="destructive"
+                    onClick={() => handleDelete(item._id)}
+                  >
+                    Delete
+                  </Button>
+                </div>
+              </TableCell>
             </TableRow>
-          </TableHeader>
-          <TableBody>
-            {Array.isArray(data) &&
-              data.map((item, idx) => (
-                <TableRow key={item._id}>
-                  <TableCell>{idx + 1}</TableCell>
-                  <TableCell>{item._id}</TableCell>
-                  <TableCell>{item.firstName}</TableCell>
-                  <TableCell>{item.lastName}</TableCell>
-                  <TableCell>{item.age}</TableCell>
-                  <TableCell>
-                    <div className="flex gap-2">
-                      <Button
-                        variant="outline"
-                        onClick={() => handleEdit(item)}
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                        variant="destructive"
-                        onClick={() => handleDelete(item._id)}
-                      >
-                        Delete
-                      </Button>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ))}
-          </TableBody>
-        </Table>
-      </div>
+          ))}
+      </TableBody>
+    </Table>
+  </div>
+</div>
+
     </div>
   );
 }
